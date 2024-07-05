@@ -98,8 +98,8 @@
 
 -- SELECT MAX(length),MIN(length), SUM(replacement_cost) FROM film;
 
--- SELECT MAX(length) FROM film
--- WHERE rental_rate IN (0.99,2.99);
+SELECT MAX(length) FROM film
+WHERE rental_rate IN (0.99,2.99);
 
 --SELECT MAX(length), rental_rate FROM film   --Group BY hatası aldık aggregate fonk ile değer alırken bir de sütun yazdıramayız
 
@@ -117,21 +117,20 @@
 -- WHERE length>150
 
 
--- SELECT rental_rate, MAX(length) FROM film 
--- GROUP BY rental_rate;                               --Filmleri grupladık rental_rate'e göre uzunluk ölçmesi
+ SELECT rental_rate, MAX(length) FROM film 
+ GROUP BY rental_rate;                               --Filmleri grupladık rental_rate'e göre uzunluk ölçmesi
 
--- SELECT rental_rate, COUNT(*),SUM(length) FROM film
--- GROUP BY rental_rate;                               --SELECT kısmına GROUP BY da kullandıgımız bir şeyi yada aggregate fonksiyon yazabiliriz
-                                                    --ikisini de yazdık YANİ GROUP BY rental_rate iken biz SELECT yanina title yazamayiz
--- SELECT rating,COUNT(*) FROM film
--- GROUP BY rating;                               --HERBİR ratinge karşılık film sayısını bulduran sorgu
+ SELECT rental_rate, COUNT(*),SUM(length) FROM film
+ GROUP BY rental_rate;                               --SELECT kısmına GROUP BY da kullandıgımız bir şeyi yada aggregate fonksiyon yazabiliriz
+                                                  --ikisini de yazdık YANİ GROUP BY rental_rate iken biz SELECT yanina title yazamayiz
+ SELECT rating,COUNT(*) FROM film
+ GROUP BY rating;                               --HERBİR ratinge karşılık film sayısını bulduran sorgu
 
--- SELECT replacement_cost,rental_rate, MIN(length) FROM film
--- GROUP BY replacement_cost,rental_rate                          --ikili gruplandırma da yapabiliriz belki daha fazlası da deneyeceğim
--- ORDER BY replacement_cost DESC,rental_rate DESC;               --azalana göre sıraladım
+ SELECT replacement_cost,rental_rate, MIN(length) FROM film
+ GROUP BY replacement_cost,rental_rate                          --ikili gruplandırma da yapabiliriz belki daha fazlası da deneyeceğim
+ ORDER BY replacement_cost DESC,rental_rate DESC;               --azalana göre sıraladım
 
-	
--- --SELECT COUNT(DISTINCT replacement_cost) FROM film
+ --SELECT COUNT(DISTINCT replacement_cost) FROM film
 
 -- SELECT replacement_cost,rental_rate, MIN(length) FROM film
 -- GROUP BY replacement_cost,rental_rate                          
