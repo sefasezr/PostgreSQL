@@ -49,3 +49,28 @@ ADD CHECK (age>18);
 
 INSERT INTO users (username,email,age) VALUES('messi','messi@gmail.com',33);
 
+CREATE TABLE students (
+	id SERIAL,
+	name VARCHAR(30) NOT NULL,
+	lastname VARCHAR(50) NOT NULL,
+	teacher_name VARCHAR(35) REFERENCES teachers(name)
+)
+
+CREATE TABLE teachers (
+	name VARCHAR(30) PRIMARY KEY,
+	brans VARCHAR(30) NOT NULL
+);
+
+SELECT * FROM teachers;
+SELECT * FROM students;
+
+ALTER TABLE teachers 
+ADD CHECK (brans LIKE 'M%')	;
+
+INSERT INTO teachers VALUES ('Mehmet','Matematik');
+INSERT INTO teachers VALUES ('ahmet','Muzik');
+
+INSERT INTO students (name,lastname,teacher_name) VALUES ('Sefa','Sezer','ahmet')
+
+SELECT * FROM teachers
+JOIN students ON students.teacher_name = teachers.name

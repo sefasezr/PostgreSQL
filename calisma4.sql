@@ -74,3 +74,32 @@ WHERE id >11
 RETURNING *;                      --11'den buyuk id'li tüm verileri silip sildiklerini bize gösterdi
 
 CREATE DATABASE test;
+
+
+CREATE TABLE tedarikciler1(
+	vergi_no INTEGER PRIMARY KEY,
+	firma_ismi VARCHAR(50),
+	irtibat_ismi VARCHAR(50)
+);
+
+CREATE TABLE urunler1(
+	ted_vergino INTEGER,
+	urun_id INTEGER,
+	urun_isim VARCHAR(50),
+	musteri_isim VARCHAR(50),
+	FOREIGN KEY (ted_vergino) REFERENCES tedarikciler1 (vergi_no)
+);
+
+UPDATE urunler1
+SET urun_isim = (SELECT firma_ismi FROM tedarikciler1 WHERE irtibat_ismi = 'Adam Eve')
+WHERE musteri_isim = 'Ali Bak';
+
+UPDATE urunler1
+SET musteri_isim = (SELECT irtibat_ismi FROM tedarikciler1 WHERE firma_ismi = 'Apple') 
+WHERE urun_isim = 'Laptop';
+
+
+
+
+
+
